@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Rezultat pretage za {{ search }}</h2>
+
+    <center>
+    	<form action="/search" method=post>
+		    <input type=text name=search value="{{ request.form.search}}">
+		    <div class="actions"><input type=submit value="Search"></div>
+		  </form>
+    </center>
+    
+  </div>
+
+
+  <div class="container">
+      {% for s in search_result %}
+        <div class="friend_container">
+          <img src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png" alt="profile image">
+          <h3>{{ s.first_name }} {{ s.last_name }}</h3>
+          <center>
+            {% if s.id in idList %}
+              <a href="/add_remove/obrisi/{{ s.id }}"><button>Obrisi prijatelja</button></a>
+            {% else %}
+              <a href="/follow/{{ s.id }}"><button>Dodaj prijatelja</button></a>
+            {% endif %}
+          </center>
+        </div>
+      {% endfor %}
+  </div>
+
+{% endblock %}

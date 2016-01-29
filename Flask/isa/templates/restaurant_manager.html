@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>{{ restaurant.name }}</h2>
+    <center><h4><i>{{ restaurant.type }}</i></h4></center>
+    <center><a href="/edit_restaurant/{{ restaurant.id }}">Izmena</a></center>
+  </div>
+
+  <div class="container">
+  	<center><h3>Cenovnik</h3></center>
+
+    <form name="form" action="manager_dashboard" method="POST">
+      <input type="text" name="naziv" placeholder="Naziv">
+      <input type="text" name="opis" placeholder="Opis">
+      <input type="number" name="cena" placeholder="Cena">
+      <input type="submit" value="Dodaj jeli ili pice">
+    </form>
+
+    <table style="width:100%">
+      <tr>
+        <td>Naziv</td>
+        <td>Opis</td>
+        <td>Cena</td>
+      </tr>
+      {% for item in menu %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.price }} rsd</td>
+        <td><a href="/delete_menu_item/{{ restaurant.id }}/{{ item.id }}">Obrisi</a></td>
+      </tr>
+      {% endfor %}
+    </table> 
+
+  </div>
+
+{% endblock %}

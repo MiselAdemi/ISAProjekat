@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Prijatelji</h2>
+
+    <center>
+    	<form action="/search" method=post>
+		    <input type=text name=search value="{{ request.form.search}}">
+		    <div class="actions"><input type=submit value="Search"></div>
+		</form>
+    </center>
+    
+  </div>
+
+  <div class="container">
+
+  	{% for restaurant in restaurants %}
+  		<p>{{ restaurant.name }}</p>
+  	{% endfor %}
+{% endblock %}

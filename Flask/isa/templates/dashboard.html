@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Sistem Manager</h2>
+  </div>
+
+  <div class="container">
+  	<a href="/add_restaurante"><button>Dodaj novi restoran</button></a>
+  </div>
+
+  <div class="container">
+  {% for r in restorants %}
+  	<div class="restaurant_container">
+  		<img src="http://www.papannis.com/img/restaurant.jpg">
+  		<h4>{{ r.name }}</h4>
+  		<a href="/remove_restourant/{{ r.id }}"><button>Obrisi restoran</button></a>
+  		<a href="/add_manager/{{ r.id }}"><button>Menageri</button></a>
+  	</div><br><br>
+  {% endfor %}
+  </div>
+
+
+{% endblock %}

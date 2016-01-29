@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+  <h2>Dodaj novi restoran</h2>
+ 
+  {% for message in form.name.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  {% for message in form.type.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  <form action="{{ url_for('add_restaurante') }}" method=post>
+    {{ form.hidden_tag() }}
+     
+    {{ form.name.label }}
+    {{ form.name }}
+     
+    {{ form.type.label }}
+    {{ form.type }}
+     
+    {{ form.submit }}
+  </form>
+     
+{% endblock %}

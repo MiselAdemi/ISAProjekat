@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>{{ restaurant.name }}</h2>
+    <center><h4><i>Izmena restorana</i></h4></center>
+  </div>
+
+  {% for message in form.name.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  {% for message in form.type.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  <form action="{{ url_for('edit_restaurant', id = restaurant.id) }}" method=post>
+    {{ form.hidden_tag() }}
+     
+    {{ form.name.label }}
+    {{ form.name(value= restaurant.name) }}
+     
+    {{ form.type.label }}
+    {{ form.type(value= restaurant.type) }}
+     
+    {{ form.submit }}
+  </form>
+
+{% endblock %}

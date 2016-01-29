@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h2>Restaurants</h2>
+  </div>
+
+  <form class="form" action="/filter_restaurants" method="POST">
+    <input type="text" name="naziv" placeholder="Naziv">
+    <input type="text" name="tip" placeholder="Tip kuhinje">
+    <input type="submit" value="Filter">
+  </form>
+
+  <div class="container">
+
+  	{% for restaurant in restaurants %}
+      <div class="restorants">
+        <img src="http://www.papannis.com/img/restaurant.jpg">
+        <a href="/rezervacija/{{ restaurant.id }}"><p>{{ restaurant.name }}</p></a>
+        <p>{{ restaurant.type }}</p>
+      </div>
+  		
+  	{% endfor %}
+{% endblock %}

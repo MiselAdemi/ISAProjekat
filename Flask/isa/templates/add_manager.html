@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+  <h2>Dodaj menagera {{ restourant.name }}</h2>
+ 
+ <div class="manager_list">
+   {% for u in users %}
+    <div class="user_box">
+      <h4>{{ u.first_name }} {{ u.last_name }}</h4>
+      <a href="/remove_user_as_manager/{{ u.id }}/{{ restourant.id }}"><button>Obrisi</button></a>
+    </div>
+  {% endfor %}
+ </div>
+
+ <div class="container">
+  {% for u in can %}
+    <div class="user_box">
+      <img src="http://thesocialmediamonthly.com/wp-content/uploads/2015/08/photo.png">
+      <h4>{{ u.first_name }} {{ u.last_name }}</h4>
+      <a href="/add_user_as_manager/{{ u.id }}/{{ restourant.id }}"><button>Dodaj</button></a>
+    </div>
+  {% endfor %}
+ </div>
+
+  
+{% endblock %}
